@@ -1,0 +1,1 @@
+/Users/akuraru/Documents/Titanium Studio Workspace/NotNotBrid/Resources/ui/friendWindow.js

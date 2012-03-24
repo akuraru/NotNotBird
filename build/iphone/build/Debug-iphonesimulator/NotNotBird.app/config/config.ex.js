@@ -1,0 +1,1 @@
+/Users/akuraru/Documents/Titanium Studio Workspace/NotNotBrid/Resources/config/config.ex.js

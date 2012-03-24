@@ -1,7 +1,7 @@
 /**
  * @author P.I.akura
  */
-Ak.createHomeWindow = function () {
+function HomeWindow() {
 	win = Ti.UI.createWindow({title:'Home'});
 	
 	var rowData = [];
@@ -36,7 +36,7 @@ Ak.createHomeWindow = function () {
 	return win;
 }
 
-Ak.createAkRow = function(image,rowd,nextWin,params){
+function AkRow(image,rowd,nextWin,params){
 	var row = Ti.UI.createTableViewRow({
 		hasChild:true,
 	});
@@ -69,3 +69,5 @@ Ak.createAkRow = function(image,rowd,nextWin,params){
 	
 	return row;
 }
+
+exports = HomeWindow;

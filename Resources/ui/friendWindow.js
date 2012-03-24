@@ -2,6 +2,7 @@
  * @author P.I.akura
  */
 
+
 Ak.createFriendWindow = function (e) {
 	var win = Ti.UI.createWindow({title:'friend'});
 	
@@ -25,35 +26,3 @@ Ak.createFriendWindow = function (e) {
 	
 	return win;
 }
-
-Ak.createAccountRow = function(user,nextWin) {
-	var row = Titanium.UI.createTableViewRow();
-	row.height = 64;
-	row.add(Titanium.UI.createLabel({
-		text: user.screen_name,
-		top: 8,
-		left: 64,
-		height: 16
-	}));
-	row.add(Titanium.UI.createLabel({
-		text: user.name,
-		top: 32,
-		left: 64,
-		width: 256,
-		height: 'auto',
-		font: {
-			fontsize:12
-		}
-	}));
-	row.add(Titanium.UI.createImageView({
-		image: user.profile_image_url,
-		top:8,
-		left:8,
-		width:48,
-		height:48
-	}));
-	row.addEventListener('click', function(e) {
-		Ti.App.tab.open(nextWin(user));
-	});
-	return row;
-};

@@ -1,5 +1,6 @@
 
 Ti.include('oauth_adapter.js');
+Ti.include('/config/config.js');
 
 var TwitterClient = function(secret, key)
 {
@@ -742,3 +743,7 @@ var TwitterClient = function(secret, key)
     return this.callApi(params);
   };
 };
+
+var tc = TwitterClient(config.consumer_key,config.consumer_secret);
+
+exports = tc;
