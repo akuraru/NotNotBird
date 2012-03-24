@@ -4,6 +4,7 @@
 var _style;
 
 var tc = require('/lib/TwitterClient');
+Ti.API.info('End require')
 var avc = tc.account_verify_credentials({});
 
 function FirstWindow() {

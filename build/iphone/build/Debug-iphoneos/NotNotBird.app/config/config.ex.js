@@ -1,0 +1,1 @@
+/Users/akuraru/NotNotBird/Resources/config/config.ex.js

@@ -1,1 +1,0 @@
-/Users/akuraru/Documents/Titanium Studio Workspace/NotNotBrid/Resources/ui/firstWindow.js
