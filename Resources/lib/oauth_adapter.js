@@ -273,7 +273,7 @@ var OAuthAdapter = function(pConsumerSecret, pConsumerKey, pSignatureMethod)
     {
         receivePinCallback = pReceivePinCallback;
 
-        window = Ti.UI.createWindow({
+        var window = Ti.UI.createWindow({
             modal: true,
             fullscreen: true
         });
@@ -411,7 +411,7 @@ var OAuthAdapter = function(pConsumerSecret, pConsumerKey, pSignatureMethod)
         	}
         }
 
-        Ti.API.debug('*** sendStatus, Response: [' + client.status + '] ' + client.responseText);
+        Ti.API.info('*** sendStatus, Response: [' + client.status + '] ' + client.responseText);
 
         return JSON.parse(client.responseText);
 

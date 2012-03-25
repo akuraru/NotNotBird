@@ -7,7 +7,7 @@
 	<string name="description">自己紹介</string>
 	<string name="url">ウェブ</string>
 	<string name="statuses_count">ツイート数</string>
-	
+
 	<string name="statuses_home_timeline">ホーム</string>
 	<string name="statuses_mentions">@関連</string>
 	<string name="direct_messages">ダイレクトメッセージ</string>
@@ -15,7 +15,7 @@
 	<string name="statuses_user_timeline">マイツイート</string>
 	<string name="account_verify_credentials">マイプロフィール</string>
 	<string name="statuses_public_timeline">公開TL</string>
-	
+
 	<string name="user_agent_message">user agent set to</string>
 	<string name="format_test">Your name is %s</string>
 	<string name="base_ui_title">Base UI</string>

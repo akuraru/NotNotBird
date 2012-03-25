@@ -8,7 +8,7 @@ var TwitterClient = function(secret, key)
     // load the access token for the service (if previously saved)
     oAuthAdapter.loadAccessToken('twitter');
 
-	this.checkIfAuthorized = function() {
+	this.checkIfAuthorized = function(win) {
 		// if the client is not authorized, ask for authorization. the previous tweet will be sent automatically after authorization
 		if (oAuthAdapter.isAuthorized() == false)
 		{
@@ -21,6 +21,9 @@ var TwitterClient = function(secret, key)
 			};
 			// show the authorization UI and call back the receive PIN function
 			oAuthAdapter.showAuthorizeUI('https://api.twitter.com/oauth/authorize?' + oAuthAdapter.getRequestToken('https://api.twitter.com/oauth/request_token'), receivePin);
+	    	return false;
+	    }else {
+	    	return true;
 	    }
     };
 	
