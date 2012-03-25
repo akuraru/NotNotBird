@@ -6,10 +6,8 @@ var TwitterClient = function(secret, key)
 {
     var oAuthAdapter = new OAuthAdapter(key, secret, 'HMAC-SHA1');
 	
-	Ti.API.info('End oAuthAdapter');
     // load the access token for the service (if previously saved)
     oAuthAdapter.loadAccessToken('twitter');
-	Ti.API.info('End load access token');
 
 	this.checkIfAuthorized = function() {
 		// if the client is not authorized, ask for authorization. the previous tweet will be sent automatically after authorization
@@ -27,7 +25,6 @@ var TwitterClient = function(secret, key)
 	    }
     };
 	
-	Ti.API.info('End this');
   /**
     Twitter APIs
     We can use same parameter of Twitter API. 
@@ -748,7 +745,5 @@ var TwitterClient = function(secret, key)
 };
 
 var tc = new TwitterClient(config.consumer_key,config.consumer_secret);
-
-Ti.API.info('End con');
 
 exports = tc;

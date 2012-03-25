@@ -309,7 +309,9 @@ var OAuthAdapter = function(pConsumerSecret, pConsumerKey, pSignatureMethod)
         });
 		Ti.API.debug('Setting:['+Ti.UI.AUTODETECT_NONE+']');
         webView.addEventListener('load', function(e){
-        	if(authorizeUICallback(e)) window.close();
+        	if(authorizeUICallback(e)) {
+        		window.close();
+        	}
         });
         view.add(webView);
 

@@ -4,13 +4,14 @@
 var _style;
 
 var tc = require('/lib/TwitterClient');
-Ti.API.info('End require')
 var avc = tc.account_verify_credentials({});
 
 function FirstWindow() {
 	var self = Ti.UI.createWindow(_style.window);
 	
 	var rowData = [];
+	
+	Ti.API.info(avc)
 	var row = _accountRow(avc);
 	row.addEventListener('click', function(e) {
 		self.containingTab.open(new (require('HomeWindow'))(avc));
@@ -24,7 +25,7 @@ function FirstWindow() {
 }
 
 
-function _accountRow(user,nextWin) {
+function _accountRow(user) {
 	var row = Ti.UI.createTableViewRow(_style.row);
 	
 	_style.userNameLavel.text = user.screen_name;

@@ -1,3 +1,5 @@
+var tc = require('/lib/TwitterClient');
+
 var self = new (require('/ui/firstWindow'))();
 
 var tab = Ti.UI.createTab({
