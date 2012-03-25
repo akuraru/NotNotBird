@@ -309,9 +309,7 @@ var OAuthAdapter = function(pConsumerSecret, pConsumerKey, pSignatureMethod)
         });
 		Ti.API.debug('Setting:['+Ti.UI.AUTODETECT_NONE+']');
         webView.addEventListener('load', function(e){
-        	if(authorizeUICallback(e)) {
-        		window.close();
-        	}
+        	if(authorizeUICallback(e)) window.close();
         });
         view.add(webView);
 
@@ -379,8 +377,8 @@ var OAuthAdapter = function(pConsumerSecret, pConsumerKey, pSignatureMethod)
             Ti.API.debug('The send status cannot be processed as the client doesn\'t have an access token. The status update will be sent as soon as the client has an access token.');
 
             actionsQueue.push({
-                url: params.url,
-                parameters: params.parameters,
+                url: pUrl,
+                parameters: pParameters,
             });
             return;
         }

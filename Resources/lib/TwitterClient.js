@@ -1,11 +1,10 @@
 
-Ti.include('/lib/oauth_adapter.js');
-Ti.include('/config/config.js');
+Ti.include('oauth_adapter.js');
 
 var TwitterClient = function(secret, key)
 {
     var oAuthAdapter = new OAuthAdapter(key, secret, 'HMAC-SHA1');
-	
+
     // load the access token for the service (if previously saved)
     oAuthAdapter.loadAccessToken('twitter');
 
@@ -743,7 +742,3 @@ var TwitterClient = function(secret, key)
     return this.callApi(params);
   };
 };
-
-var tc = new TwitterClient(config.consumer_key,config.consumer_secret);
-
-exports = tc;

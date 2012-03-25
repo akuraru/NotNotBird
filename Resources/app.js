@@ -1,13 +1,17 @@
-var tc = require('/lib/TwitterClient');
+var Ak = {};
+Ti.include(
+	'config/config.js',
+	'ui/twitter.js',
+	'lib/TwitterClient.js'
+)
+Ak.tClient = new TwitterClient(config.consumer_key, config.consumer_secret);
+Ak.tClient.checkIfAuthorized();
+var avc = Ak.tClient.account_verify_credentials({});
 
-var self = new (require('/ui/firstWindow'))();
-
-var tab = Ti.UI.createTab({
-    window: self,
+Ti.App.tab = Ti.UI.createTab({
+    window: Ak.createFirstWindow(),// 初期ウィンドウ
 });
-self.containingTab = tab;
 
 var tg = Ti.UI.createTabGroup();
-
-tg.addTab(tab);
+tg.addTab(Ti.App.tab);
 tg.open();
