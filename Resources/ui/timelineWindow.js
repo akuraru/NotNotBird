@@ -1,69 +1,45 @@
 /**
  * @author P.I.akura
  */
+var _tab;
 
-Ak.createTimelineWindow = function (e) {
-	var win = Ti.UI.createWindow({title:'Timeline'});
+function TimelineWindow (e) {
+	var _style = require('/style/timelineWindow');
+	
+	var win = Ti.UI.createWindow(_style.window);
 	
 	var rowData = [];
 	
 	Ti.API.info(e[0]);
-	for (var i in e) rowData.push(Ak.createTableViewRow(e[i]));
+	for (var i in e) {
+		tweet = e[i];
+		var row = Ti.UI.createTableViewRow(_style.row);
+		
+		_style.tweet.text = tweet.text;
+		row.add(Titanium.UI.createLabel(_style.tweet));
+		
+		_style.screanName.text = tweet.user.screen_name;
+		row.add(Titanium.UI.createLabel(_style.screanName));
+		
+		_style.image.image = tweet.user.profile_image_url;
+		row.add(Titanium.UI.createImageView(_style.image));
+		
+		row.tweet = tweet;
+		row.addEventListener('click', openTweetWindow);
+		rowData.push(row);
+	}
 	
-	var tableView = Ti.UI.createTableView({
-		data:rowData,
-	});
+	_style.tableView.data = rowData;
+	var tableView = Ti.UI.createTableView(_style.tableView);
 	win.add(tableView);
 	
-	win.toolbar = (function(){
-		var flexSpace = Titanium.UI.createButton({
-		        systemButton:Titanium.UI.iPhone.SystemButton.FLEXIBLE_SPACE
-		});
-		var tweet = Ti.UI.createButton({
-			title:'send',
-		});
-		tweet.addEventListener('click', function(e) {
-			Ti.App.tab.open(Ak.createPostWindow());
-		});
-		return [flexSpace,tweet];
-	})();
+	win.toolbar = new (require('/ui/toolbar'))();
 	
 	return win;
 }
+function openTweetWindow(e) {
+	tab.open(new (require('/ui/TweetWindow'))(e.rowData.tweet));
+}
 
-Ak.createTableViewRow = function(tweet) {
-	var row = Titanium.UI.createTableViewRow({height:'auto'});
-	row.add(Titanium.UI.createLabel({
-		text: tweet.text,
-		top: 32,
-		left: 64,
-		width: 256,
-		height: 'auto',
-		bottom: 8,
-		font: {
-			fontsize:12
-		}
-	}));
-	row.add(Titanium.UI.createLabel({
-		text: tweet.user.screen_name,
-		top: 8,
-		left: 64,
-		height: 16
-	}));
-	row.add(Titanium.UI.createImageView({
-		image: tweet.user.profile_image_url,
-		top:8,
-		left:8,
-		width:48,
-		height:48
-	}));
-	row.tweet = tweet;
-	row.addEventListener('click', function(e) {
-		// 新しいWindowを生成し、現在のTabにぶら下げて表示
-		var thisTweet = e.rowData.tweet;
-		Ti.App.tab.open(
-		Ak.createTweetWindow(thisTweet)
-		);
-	});
-	return row;
-};
+
+exports = TimelineWindow;

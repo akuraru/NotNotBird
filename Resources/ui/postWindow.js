@@ -2,7 +2,7 @@
  * @author P.I.akura
  */
 
-Ak.createPostWindow = function(){
+function postWindow(){
 	win = Ti.UI.createWindow({title:'Home',backgroundColor:'white'});
 	
 	var text=Ti.UI.createTextArea({
@@ -19,10 +19,12 @@ Ak.createPostWindow = function(){
 			title:'send',
 		});
 		button.addEventListener('click', function(e) {
-			Ak.tClient.statuses_update({parameters:[['status',text.value]]});
+			tClient.statuses_update({parameters:[['status',text.value]]});
 		});
 		return button
 	})())
 	
 	return win; 
 }
+
+exports = postWindow;

@@ -2,7 +2,7 @@ var _style = {};
 
 _style.window = {
 	title:'userinfo',
-	tabBarHidden:true
+	tabBarHidden:true,	
 }
 _style.table = {}
 

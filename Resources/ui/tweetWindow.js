@@ -2,8 +2,7 @@
  * @author P.I.akura
  */
 
-// 単独Tweet表示Windowを生成する。
-Ak.createTweetWindow = function(thisTweet) {
+function tweetWindow(thisTweet) {
 	// 新しいWindowを生成し、現在のTabにぶら下げて表示
 	var newWindow = Ti.UI.createWindow({
 		backgroundColor: '#fff'
@@ -16,7 +15,7 @@ Ak.createTweetWindow = function(thisTweet) {
 			backgroundColor: '#ccc'
 		});
 		view.addEventListener('click',function(e){ 
-			Ti.App.tab.open(Ak.createAccountWindow(thisTweet.user));
+			tab.open(new (require('/ui/AccountWindow'))(thisTweet.user));
 		});
 		view.add(Titanium.UI.createImageView({
 			image: thisTweet.user.profile_image_url,
@@ -61,3 +60,5 @@ Ak.createTweetWindow = function(thisTweet) {
 	
 	return newWindow;
 };
+
+exports = tweetWindow;

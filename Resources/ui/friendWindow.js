@@ -2,8 +2,10 @@
  * @author P.I.akura
  */
 
-Ak.createFriendWindow = function (e) {
-	var win = Ti.UI.createWindow({title:'friend'});
+function friendWindow(e) {
+	var _style = require('/style/friendWindow');
+	
+	var win = Ti.UI.createWindow(_style.window);
 	
 	var rowData = [];
 	
@@ -13,15 +15,22 @@ Ak.createFriendWindow = function (e) {
 	for (var i in e) user_ids = user_ids + ',' + e[i];
 	user_ids = user_ids.substring(1);
 	Ti.API.info(user_ids);
-	var users = Ak.tClient.users_lookup({parameters:[['user_id',user_ids]]});
-	for (var i in users) rowData.push(new (require('/ui/AccountRow'))(users[i],Ak.createAccountWindow));
+	var users = tClient.users_lookup({parameters:[['user_id',user_ids]]});
+	for (var i in users) {
+		var row = new (require('/ui/AccountRow'))(users[i]);
+		row.addEventListener('click',function(){
+			tab.open(new (require('/ui/AccountWindow'))(users[i]))
+		})
+		rowData.push(row);
+	}
 	
 	Ti.API.info(users);
 	
-	var tableView = Ti.UI.createTableView({
-		data:rowData,
-	});
+	_style.tableView.data = rowData;
+	var tableView = Ti.UI.createTableView(_style.tableView);
 	win.add(tableView);
 	
 	return win;
 }
+
+exports = friendWindow;

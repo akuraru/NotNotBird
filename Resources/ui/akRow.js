@@ -1,3 +1,0 @@
-/**
- * @author P.I.akura
- */
