@@ -1,5 +1,4 @@
 Ti.include(
-	'firstWindow.js',
 	'homeWindow.js',
 	'akRow.js',
 	'timelineWindow.js',
