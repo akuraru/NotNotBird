@@ -4,6 +4,8 @@ _style.window = {
 	title:'userinfo',
 	tabBarHidden:true,	
 }
-_style.table = {}
+_style.table = {
+	editable : true,
+}
 
 exports = _style;

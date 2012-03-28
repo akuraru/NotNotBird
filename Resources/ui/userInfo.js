@@ -6,12 +6,6 @@ function userInfo (user, followButtonHidden) {
 	_style.image.image = user.profile_image_url;
 	view.add(Ti.UI.createImageView(_style.image));
 	
-	_style.userName.text = user.name;
-	view.add(Ti.UI.createLabel(_style.userName));
-	
-	_style.screanName.text = '@' + user.screen_name;
-	view.add(Ti.UI.createLabel(_style.screanName));
-	
 	if(!followButtonHidden && user.id != avc.id){
 		view.add((function(){
 			var b = Ti.UI.createButton(_style.followButton);
@@ -43,7 +37,19 @@ function userInfo (user, followButtonHidden) {
 			}
 			return b;
 		})());
+		
+		_style.nameView.right = 88;
 	}
+	
+	var nameView = Ti.UI.createView(_style.nameView);
+	view.add(nameView);
+	
+	_style.userName.text = user.name;
+	nameView.add(Ti.UI.createLabel(_style.userName));
+	
+	_style.screanName.text = '@' + user.screen_name;
+	nameView.add(Ti.UI.createLabel(_style.screanName));
+	
 	return view;
 }
 

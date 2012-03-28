@@ -11,16 +11,16 @@ _style.image = {
 	width:44,
 	height:44
 }
+_style.nameView = {
+	top :8 ,buttom :8,
+	left:60 , right: 8,
+}
 _style.userName = {
-	top:8,
+	top : 0,
 	height:20,
-	left:60,
-	right:88,
 }
 _style.screanName ={
-	top:30,
-	left:60,
-	right:88,
+	top:22,
 	height:'auto',
 	font: {
 		fontSize:12
@@ -32,6 +32,10 @@ _style.followButton = {
 	width:80,
 	height:20,
 	style:'none'
+}
+_style.plain = {
+	right:0,
+	style:Titanium.UI.iPhone.SystemButtonStyle.PLAIN,
 }
 
 exports = _style;

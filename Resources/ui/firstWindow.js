@@ -1,22 +1,22 @@
 /**
  * @author P.I.akura
  */
+var tv;
+
 function firstWindow() {
 	var _style = require('/style/firstWindow');
 	
 	var win = Ti.UI.createWindow(_style.window);
 	
-	var tableView = Ti.UI.createTableView(_style.table);
+	tv = Ti.UI.createTableView(_style.table);
 	
-	win.add(tableView);
-	win.addEventListener('open',function () {
-		cRow(tableView);
-	})
+	win.add(tv);
+	win.cRow = cRow;
 	
 	return win;
 }
-function cRow (tv){
-	avc = tClient.account_verify_credentials({});
+function cRow (){
+	Ti.API.info('open cRow')
 	var rowData = [];
 
 	var row = new (require('/ui/AccountRow'))(avc);
@@ -27,6 +27,6 @@ function cRow (tv){
 	rowData.push(row);
 	
 	tv.data = rowData;
-} 
+}
 
 exports = firstWindow;
